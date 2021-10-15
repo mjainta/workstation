@@ -25,12 +25,3 @@
     name: code
     classic: yes
     state: present
-# tilix
-# terraform
-# terragrunt (make terragrunt)
-# aws-cli (into /usr/local/aws-cli/v2/current/bin/aws)
-# docker
-# fzf
-# ghq (Set ghq root path to $HOME/Projects for maj_aliases.zsh)
-# vscode
-# git
