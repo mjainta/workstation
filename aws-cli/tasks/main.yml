@@ -6,9 +6,11 @@
     src: https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
     dest: /tmp
     remote_src: yes
-    
+    creates: /usr/local/aws-cli/v2/current/bin/aws
 
-- name:
-  command: /tmp/aws/install
+- name: Install the aws-cli
+  command:
+    cmd: /tmp/aws/install
+    creates: /usr/local/aws-cli/v2/current/bin/aws
   become: yes
   become_method: sudo
