@@ -1,0 +1,13 @@
+---
+# tasks file for ghq
+- name: Install golang
+  ansible.builtin.unarchive:
+    src: https://golang.org/dl/go1.17.2.linux-amd64.tar.gz
+    dest: /usr/local
+    remote_src: yes
+  become: yes
+  become_method: sudo
+    
+
+- name: Install ghq
+  command: go install github.com/x-motemen/ghq@latest
