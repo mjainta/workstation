@@ -1,0 +1,24 @@
+---
+# tasks file for zsh
+- name: Git checkout
+  ansible.builtin.git:
+    repo: 'https://github.com/ohmyzsh/ohmyzsh.git'
+    dest: ~/.oh-my-zsh
+    version: master
+
+- copy:
+    src: .zshrc
+    dest: ~/.zshrc
+
+- copy:
+    src: custom/
+    dest: ~/.oh-my-zsh/custom
+
+- name: Powerlevel checkout
+  ansible.builtin.git:
+    repo: 'https://github.com/romkatv/powerlevel10k.git'
+    dest: ~/.oh-my-zsh/custom/themes/powerlevel10k
+    version: master
+
+- name: Setup default shell
+  command: chsh -s $(which zsh)
