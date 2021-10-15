@@ -1,5 +1,10 @@
 ---
 # tasks file for packages
+- name: Add repository for shutter
+  ansible.builtin.apt_repository:
+    repo: ppa:shutter/ppa
+    state: present
+
 - name: Install packages via the package manager
   ansible.builtin.package:
     name:
@@ -7,6 +12,7 @@
     - git
     - tilix
     - fzf
+    - shutter
     state: present
 
 - name: Install snap packages
