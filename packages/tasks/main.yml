@@ -1,0 +1,36 @@
+---
+# tasks file for packages
+- name: Install docker
+  ansible.builtin.package:
+    name: docker-ce
+    state: present
+
+- name: Install git
+  ansible.builtin.package:
+    name: git
+    state: present
+
+- name: Install tilix
+  ansible.builtin.package:
+    name: tilix
+    state: present
+
+- name: Install fzf
+  ansible.builtin.package:
+    name: fzf
+    state: present
+
+- name: Install snap for vscode
+  snap:
+    name: code
+    classic: yes
+    state: present
+# tilix
+# terraform
+# terragrunt (make terragrunt)
+# aws-cli (into /usr/local/aws-cli/v2/current/bin/aws)
+# docker
+# fzf
+# ghq (Set ghq root path to $HOME/Projects for maj_aliases.zsh)
+# vscode
+# git
