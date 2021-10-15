@@ -5,9 +5,13 @@
     src: https://golang.org/dl/go1.17.2.linux-amd64.tar.gz
     dest: /usr/local
     remote_src: yes
+    creates: /usr/local/go
   become: yes
   become_method: sudo
-    
+
+- copy:
+    src: .gitconfig
+    dest: ~/.gitconfig
 
 - name: Install ghq
   command: go install github.com/x-motemen/ghq@latest
