@@ -13,6 +13,7 @@
     - tilix
     - fzf
     - shutter
+    - tig
     state: present
 
 - name: Install snap packages
