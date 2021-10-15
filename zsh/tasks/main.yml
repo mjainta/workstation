@@ -14,6 +14,10 @@
     src: custom/
     dest: ~/.oh-my-zsh/custom
 
+- copy:
+    src: .p10k.zsh
+    dest: ~/.p10k.zsh
+
 - name: Powerlevel checkout
   ansible.builtin.git:
     repo: 'https://github.com/romkatv/powerlevel10k.git'
