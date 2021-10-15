@@ -15,3 +15,10 @@ Now, run the following:
 ansible-playbook --ask-become-pass --skip-tags "init,only-company" --diff setup.yml # For private notebook
 ansible-playbook --ask-become-pass --skip-tags "init,only-private" --diff setup.yml # For company notebook
 ```
+
+## Add a new role
+
+```bash
+ansible-galaxy init test-role-1
+rm test-role-1/.travis.yml
+```
