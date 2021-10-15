@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+
+  roles:
+    - role: packages
+      become: yes
+      become_method: sudo
+    - role: ghq
+    - role: zsh
+    - role: aws-cli
