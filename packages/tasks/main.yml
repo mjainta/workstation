@@ -25,3 +25,9 @@
     name: code
     classic: yes
     state: present
+
+- name: Install snap for spotify
+  snap:
+    name: spotify
+    classic: yes
+    state: present
