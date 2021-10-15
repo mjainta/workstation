@@ -1,0 +1,14 @@
+---
+# tasks file for aws-cli
+
+- name: Download aws-cli
+  ansible.builtin.unarchive:
+    src: https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
+    dest: /tmp
+    remote_src: yes
+    
+
+- name:
+  command: /tmp/aws/install
+  become: yes
+  become_method: sudo
