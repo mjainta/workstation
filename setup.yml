@@ -2,9 +2,11 @@
 - hosts: localhost
 
   roles:
+    - role: zsh
+      tags:
+      - init
     - role: packages
       become: yes
       become_method: sudo
     - role: ghq
-    - role: zsh
     - role: aws-cli

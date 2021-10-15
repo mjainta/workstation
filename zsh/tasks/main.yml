@@ -21,4 +21,20 @@
     version: master
 
 - name: Setup default shell
-  command: chsh -s $(which zsh)
+  ansible.builtin.replace:
+    path: /etc/sssd/sssd.conf
+    regexp: '^default_shell = /bin/bash$'
+    replace: 'default_shell = /usr/bin/zsh'
+  become: yes
+  become_method: sudo
+  tags:
+    - only-company
+
+- name: Setup default shell
+  ansible.builtin.user:
+    name: "{{ lookup('env','USER') }}"
+    shell: /usr/bin/zsh
+  become: yes
+  become_method: sudo
+  tags:
+    - only-private
