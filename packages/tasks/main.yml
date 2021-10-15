@@ -1,33 +1,18 @@
 ---
 # tasks file for packages
-- name: Install docker
+- name: Install packages via the package manager
   ansible.builtin.package:
-    name: docker-ce
+    name:
+    - docker-ce
+    - git
+    - tilix
+    - fzf
     state: present
 
-- name: Install git
-  ansible.builtin.package:
-    name: git
-    state: present
-
-- name: Install tilix
-  ansible.builtin.package:
-    name: tilix
-    state: present
-
-- name: Install fzf
-  ansible.builtin.package:
-    name: fzf
-    state: present
-
-- name: Install snap for vscode
+- name: Install snap packages
   snap:
-    name: code
-    classic: yes
-    state: present
-
-- name: Install snap for spotify
-  snap:
-    name: spotify
+    name:
+    - code
+    - spotify
     classic: yes
     state: present
