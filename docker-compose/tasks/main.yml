@@ -1,2 +1,9 @@
 ---
 # tasks file for docker-compose
+- name: Download and install docker-compose
+  get_url:
+    url: "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-{{ ansible_system }}-{{ ansible_userspace_architecture }}"
+    dest: /usr/local/bin/docker-compose
+    mode: '0755'
+  become: yes
+  become_method: sudo

@@ -10,3 +10,4 @@
       become_method: sudo
     - role: ghq
     - role: aws-cli
+    - role: docker-compose
