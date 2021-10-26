@@ -15,6 +15,7 @@
     - shutter
     - tig
     - speedcrunch
+    - xtightvncviewer
     state: present
 
 - name: Install snap packages
