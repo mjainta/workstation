@@ -5,6 +5,11 @@
     repo: ppa:shutter/ppa
     state: present
 
+- name: Add repository for pulseeffects
+  ansible.builtin.apt_repository:
+    repo: ppa:mikhailnov/pulseeffects
+    state: present
+
 - name: Install packages via the package manager
   ansible.builtin.package:
     name:
@@ -16,6 +21,7 @@
     - tig
     - speedcrunch
     - xtightvncviewer
+    - pulseeffects
     state: present
 
 - name: Install snap packages
