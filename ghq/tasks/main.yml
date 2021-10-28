@@ -9,7 +9,8 @@
   become: yes
   become_method: sudo
 
-- copy:
+- name:
+  ansible.builtin.template:
     src: .gitconfig
     dest: ~/.gitconfig
 

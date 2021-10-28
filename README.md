@@ -8,6 +8,11 @@ ansible-playbook --ask-become-pass --tags "init" --skip-tags "only-company" --di
 ansible-playbook --ask-become-pass --tags "init" --skip-tags "only-private" --diff setup.yml # For company notebook
 ```
 
+After that, copy [variables.example.yml](variables.example.yml) into `variables.yml` and insert any values.
+```bash
+cp variables.example.yml variables.yml
+```
+
 After that, *reboot* to update the changes made on the default shell.
 
 Now, run the following:
