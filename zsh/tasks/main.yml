@@ -1,5 +1,14 @@
 ---
 # tasks file for zsh
+- name: Install the zsh package, and hard dependencies
+  ansible.builtin.package:
+    name:
+    - zsh
+    - git
+    state: present
+  become: yes
+  become_method: sudo
+
 - name: Git checkout
   ansible.builtin.git:
     repo: 'https://github.com/ohmyzsh/ohmyzsh.git'
@@ -22,6 +31,24 @@
   ansible.builtin.git:
     repo: 'https://github.com/romkatv/powerlevel10k.git'
     dest: ~/.oh-my-zsh/custom/themes/powerlevel10k
+    version: master
+
+- name: zsh syntax highlighting checkout
+  ansible.builtin.git:
+    repo: 'https://github.com/zsh-users/zsh-syntax-highlighting.git'
+    dest: ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+    version: master
+
+- name: zsh autosuggestion checkout
+  ansible.builtin.git:
+    repo: 'https://github.com/zsh-users/zsh-autosuggestions'
+    dest: ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+    version: master
+
+- name: zsh autocompletion checkout
+  ansible.builtin.git:
+    repo: 'https://github.com/zsh-users/zsh-completions'
+    dest: ~/.oh-my-zsh/custom/plugins/zsh-completions
     version: master
 
 - name: Setup default shell
