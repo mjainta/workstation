@@ -13,3 +13,4 @@
     - role: ghq
     - role: aws-cli
     - role: docker-compose
+    - role: ripgrep-all

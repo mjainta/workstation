@@ -1,0 +1,38 @@
+---
+# tasks file for ripgrep-all
+
+- name: Install packages
+  ansible.builtin.package:
+    name:
+    - ripgrep
+    - pandoc
+    - poppler-utils
+    - ffmpeg
+    state: present
+
+- name: Get binary
+  ansible.builtin.unarchive:
+    src: https://github.com/phiresky/ripgrep-all/releases/download/v0.9.6/ripgrep_all-v0.9.6-x86_64-unknown-linux-musl.tar.gz
+    dest: /tmp/
+    remote_src: yes
+    creates: /usr/local/bin/rga
+  become: yes
+  become_method: sudo
+
+- name: Copy rga binary
+  ansible.builtin.copy:
+    src: /tmp/ripgrep_all-v0.9.6-x86_64-unknown-linux-musl/rga
+    dest: /usr/local/bin/rga
+    mode: '0755'
+    force: no
+  become: yes
+  become_method: sudo
+
+- name: Copy rga-preproc binary
+  ansible.builtin.copy:
+    src: /tmp/ripgrep_all-v0.9.6-x86_64-unknown-linux-musl/rga-preproc
+    dest: /usr/local/bin/rga-preproc
+    mode: '0755'
+    force: no
+  become: yes
+  become_method: sudo
