@@ -2,18 +2,19 @@
 # tasks file for google-chrome
 - name: Check if google-chrome is installed
   command: dpkg-query -W google-chrome-stable
-  register: google-chrome-stable_check_deb
-  failed_when: google-chrome-stable_check_deb.rc > 1
-  changed_when: google-chrome-stable_check_deb.rc == 1
+  register: google_chrome_installed
+  failed_when: google_chrome_installed.rc > 1
+  changed_when: google_chrome_installed.rc == 1
 
 - name: Download google-chrome
   get_url:
     url: "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
     dest: /tmp/google-chrome-stable_current_amd64.deb
     mode: '0755'
+  when: google_chrome_installed.rc == 1
 
 - name: Install google-chrome
   apt: deb="/tmp/google-chrome-stable_current_amd64.deb"
   become: true
   become_method: sudo
-  when: google-chrome-stable_check_deb.rc == 1
+  when: google_chrome_installed.rc == 1

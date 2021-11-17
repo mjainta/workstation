@@ -14,3 +14,4 @@
     - role: aws-cli
     - role: docker-compose
     - role: ripgrep-all
+    - role: google-chrome
