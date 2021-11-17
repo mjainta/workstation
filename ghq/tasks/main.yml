@@ -16,3 +16,5 @@
 
 - name: Install ghq
   command: go install github.com/x-motemen/ghq@latest
+  args:
+    creates: /home/{{ user_name }}/go/bin/ghq
