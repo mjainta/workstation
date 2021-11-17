@@ -16,7 +16,7 @@ export PATH=$PATH:/usr/local/go/bin
 export PATH="$PATH:$HOME/go/bin"
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/mjainta/.oh-my-zsh"
+export ZSH="/home/{{ user_name }}/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -84,14 +84,13 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions zsh-completions)
+plugins=(git zsh-syntax-highlighting zsh-completions)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
 autoload -U compinit && compinit
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#484848,bg=cyan,bold,underline"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 

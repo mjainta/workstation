@@ -15,7 +15,8 @@
     dest: ~/.oh-my-zsh
     version: master
 
-- copy:
+- name:
+  ansible.builtin.template:
     src: .zshrc
     dest: ~/.zshrc
 
@@ -37,12 +38,6 @@
   ansible.builtin.git:
     repo: 'https://github.com/zsh-users/zsh-syntax-highlighting.git'
     dest: ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
-    version: master
-
-- name: zsh autosuggestion checkout
-  ansible.builtin.git:
-    repo: 'https://github.com/zsh-users/zsh-autosuggestions'
-    dest: ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
     version: master
 
 - name: zsh autocompletion checkout
