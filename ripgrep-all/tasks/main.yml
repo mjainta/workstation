@@ -9,6 +9,8 @@
     - poppler-utils
     - ffmpeg
     state: present
+  become: yes
+  become_method: sudo
 
 - name: Get binary
   ansible.builtin.unarchive:
