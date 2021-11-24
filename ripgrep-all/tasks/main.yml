@@ -48,6 +48,7 @@
   become_method: sudo
   when: is_rga_installed.rc != 0
 
+# At this point rga is actually installed, but is_rga_installed.rc is still > 0, so we use it as a check still
 - name: Remove the rga extracted directory in tmp/
   file: path=/tmp/ripgrep_all-v0.9.6-x86_64-unknown-linux-musl/ state=absent
   when: is_rga_installed.rc != 0
