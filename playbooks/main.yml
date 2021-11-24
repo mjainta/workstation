@@ -1,12 +1,9 @@
 ---
 - hosts: localhost
   vars_files:
-    - variables.yml
+    - ../variables.yml
 
   roles:
-    - role: zsh
-      tags:
-      - init
     - role: packages
       become: yes
       become_method: sudo
