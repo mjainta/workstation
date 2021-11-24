@@ -12,6 +12,12 @@
   become: yes
   become_method: sudo
 
+# Check if we need to install rga first
+- name: Check if rga is installed
+  shell: command -v rga
+  register: is_rga_installed
+  ignore_errors: yes
+
 - name: Get binary
   ansible.builtin.unarchive:
     src: https://github.com/phiresky/ripgrep-all/releases/download/v0.9.6/ripgrep_all-v0.9.6-x86_64-unknown-linux-musl.tar.gz
@@ -20,6 +26,7 @@
     creates: /usr/local/bin/rga
   become: yes
   become_method: sudo
+  when: is_rga_installed.rc != 0
 
 - name: Copy rga binary
   ansible.builtin.copy:
@@ -29,6 +36,7 @@
     force: no
   become: yes
   become_method: sudo
+  when: is_rga_installed.rc != 0
 
 - name: Copy rga-preproc binary
   ansible.builtin.copy:
@@ -38,3 +46,8 @@
     force: no
   become: yes
   become_method: sudo
+  when: is_rga_installed.rc != 0
+
+- name: Remove the rga extracted directory in tmp/
+  file: path=/tmp/ripgrep_all-v0.9.6-x86_64-unknown-linux-musl/ state=absent
+  when: is_rga_installed.rc != 0
