@@ -17,8 +17,7 @@ Then, run the init playbook:
 - This will install the zsh shell
 - Restart / Relog your workstation afterwards, since the changes need to take effect before continuing
 ```bash
-ansible-playbook --ask-become-pass --skip-tags "only-company" --diff playbooks/init.yml # For private notebook
-ansible-playbook --ask-become-pass --skip-tags "only-private" --diff playbooks/init.yml # For company notebook
+ansible-playbook --ask-become-pass --diff playbooks/init.yml
 ```
 
 **The best is now to restart the system. A logout/login might be enough, but a reboot is safer to update the changes made on the default shell.**

@@ -46,21 +46,19 @@
     dest: ~/.oh-my-zsh/custom/plugins/zsh-completions
     version: master
 
-- name: Setup default shell
+- name: Setup default shell in sssd.conf
   ansible.builtin.replace:
     path: /etc/sssd/sssd.conf
     regexp: '^default_shell = /bin/bash$'
     replace: 'default_shell = /usr/bin/zsh'
   become: yes
   become_method: sudo
-  tags:
-    - only-company
+  when: sssd == true
 
-- name: Setup default shell
+- name: Setup default shell via ansible.builtin.user
   ansible.builtin.user:
     name: "{{ lookup('env','USER') }}"
     shell: /usr/bin/zsh
   become: yes
   become_method: sudo
-  tags:
-    - only-private
+  when: sssd == false
