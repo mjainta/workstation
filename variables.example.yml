@@ -1,4 +1,5 @@
 git_email: <email-address>
 user_name: <user name>
-version_nvm: 0.39.0
 sssd: <false|true> # Is the user configured using sssd, or plain creation
+version_nvm: 0.39.0
+version_terraform: 1.0.11
