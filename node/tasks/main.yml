@@ -11,7 +11,7 @@
 
 - name: Download nvm installer
   get_url:
-    url: https://raw.githubusercontent.com/nvm-sh/nvm/v{{ versions_nvm }}/install.sh
+    url: https://raw.githubusercontent.com/nvm-sh/nvm/v{{ version_nvm }}/install.sh
     dest: /tmp/nvm-installer.sh
     mode: 0755
   when: is_nvm_installed.rc != 0
