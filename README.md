@@ -2,10 +2,13 @@
 
 ## Init
 
-First you need this repo, and Ansible. So lets start with that:
+First you need this repo, vim (or any other editor), and Ansible. So lets start with that:
 ```bash
 sudo apt update
-sudo apt install -y git ansible
+sudo apt install -y git ansible vim
+mkdir -p ~/Projects/github.com/mjainta/
+cd ~/Projects/github.com/mjainta/
+git clone git@github.com:mjainta/workstation.git
 ```
 
 To start with the setup via Ansible, copy [variables.example.yml](variables.example.yml) into `variables.yml` and insert your values.
@@ -26,7 +29,7 @@ After that, follow the instructions for a regular [Run](#Run).
 
 ## Run
 
-Use on of these commands to run the main Ansible playbook:
+Use this command to run the main Ansible playbook:
 ```bash
 ansible-playbook --ask-become-pass --diff playbooks/main.yml
 ```
