@@ -1,0 +1,60 @@
+---
+# tasks file for exa
+- name: Check if exa is installed
+  shell: zsh -ic 'command -v exa'
+  register: exa_installed
+  ignore_errors: yes
+
+- name: Create tmp directory for extraction of exa files
+  ansible.builtin.file:
+    path: /tmp/exa
+    state: directory
+    mode: '0755'
+  when: exa_installed.rc != 0
+
+- name: Download exa zip
+  ansible.builtin.unarchive:
+    src: https://github.com/ogham/exa/releases/download/v{{ version_exa }}/exa-linux-x86_64-v{{ version_exa }}.zip
+    dest: /tmp/exa
+    remote_src: yes
+  when: exa_installed.rc != 0
+
+- name: Copy exa binary
+  ansible.builtin.copy:
+    src: /tmp/exa/bin/exa
+    dest: /usr/local/bin/exa
+    mode: '0755'
+    force: no
+  become: yes
+  become_method: sudo
+  when: exa_installed.rc != 0
+
+- name: Copy exa man page
+  ansible.builtin.copy:
+    src: /tmp/exa/man/exa.1
+    dest: /usr/share/man/man1/exa.1
+    mode: '0644'
+    force: no
+  become: yes
+  become_method: sudo
+  when: exa_installed.rc != 0
+
+- name: Copy exa man page colors
+  ansible.builtin.copy:
+    src: /tmp/exa/man/exa_colors.5
+    dest: /usr/share/man/man1/exa_colors.5
+    mode: '0644'
+    force: no
+  become: yes
+  become_method: sudo
+  when: exa_installed.rc != 0
+
+- name: Copy exa shell completion
+  ansible.builtin.copy:
+    src: /tmp/exa/completions/exa.zsh
+    dest: /usr/local/share/zsh/site-functions/exa.zsh
+    mode: '0644'
+    force: no
+  become: yes
+  become_method: sudo
+  when: exa_installed.rc != 0
