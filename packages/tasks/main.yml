@@ -47,6 +47,7 @@
     - git
     - tig
     - neofetch
+    - vlc
     state: present
 
 - name: Install snap packages
