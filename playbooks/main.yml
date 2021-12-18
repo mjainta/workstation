@@ -14,3 +14,4 @@
     - role: google-chrome
     - role: node
     - role: exa
+    - role: terraform
