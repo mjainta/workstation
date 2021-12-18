@@ -6,18 +6,22 @@
   register: is_terraform_installed
   ignore_errors: yes
 
+- name: Check if the correct terraform version is installed
+  shell: "terraform --version | grep 'Terraform v{{ version_terraform }}'"
+  register: is_terraform_version_correct
+  ignore_errors: yes
+  when: is_terraform_installed.rc == 0
+
 - name: Download the terraform binary
   ansible.builtin.unarchive:
     src: https://releases.hashicorp.com/terraform/{{ version_terraform }}/terraform_{{ version_terraform }}_linux_amd64.zip
     dest: /tmp
     remote_src: yes
-    creates: /usr/local/bin/terraform
-  when: is_terraform_installed.rc != 0
+  when: is_terraform_installed.rc != 0 or is_terraform_version_correct.rc != 0
 
 - name: Install terraform
   command:
     cmd: mv /tmp/terraform /usr/local/bin/
-    creates: /usr/local/bin/terraform
   become: yes
   become_method: sudo
-  when: is_terraform_installed.rc != 0
+  when: is_terraform_installed.rc != 0 or is_terraform_version_correct.rc != 0
