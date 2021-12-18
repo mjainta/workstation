@@ -48,6 +48,7 @@
     - tig
     - neofetch
     - vlc
+    - tree
     state: present
 
 - name: Install snap packages
