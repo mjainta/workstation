@@ -46,9 +46,3 @@ repo() {
 		cd "$REPO_PATH" || exit
 	fi
 }
-
-aws() {
-  docker run --rm -it --user $(id -u):$(id -g) -v ~/.aws:/root/.aws amazon/aws-cli:latest $@
-}
-
-alias aws-cli=/usr/local/aws-cli/v2/current/bin/aws
