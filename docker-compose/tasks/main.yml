@@ -1,5 +1,10 @@
 ---
 # tasks file for docker-compose
+- name: Check if docker-compose is installed
+  shell: zsh -ic 'command -v docker-compose'
+  register: is_docker_compose_installed
+  ignore_errors: yes
+
 - name: Download and install docker-compose
   get_url:
     url: "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-{{ ansible_system }}-{{ ansible_userspace_architecture }}"
@@ -7,3 +12,4 @@
     mode: '0755'
   become: yes
   become_method: sudo
+  when: is_docker_compose_installed.rc != 0
