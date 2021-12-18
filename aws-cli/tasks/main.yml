@@ -14,3 +14,9 @@
     creates: /usr/local/aws-cli/v2/current/bin/aws
   become: yes
   become_method: sudo
+
+- name: Create the .aws directory with our user, so that the first aws command (using docker) won't create it as root
+  ansible.builtin.file:
+    path: ~/.aws
+    state: directory
+    mode: '0775'
