@@ -46,3 +46,5 @@ repo() {
 		cd "$REPO_PATH" || exit
 	fi
 }
+
+alias workstation="cd ~/Projects/github.com/mjainta/workstation"

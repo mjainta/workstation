@@ -49,6 +49,7 @@
     - neofetch
     - vlc
     - tree
+    - simple-scan
     state: present
 
 - name: Install snap packages
