@@ -1,0 +1,28 @@
+---
+# tasks file for aws-sam
+- name: Check if aws-sam-cli is installed
+  shell: zsh -ic 'command -v sam'
+  register: aws_sam_cli_installed
+  ignore_errors: yes
+
+- name: Create tmp directory for extraction of aws-sam-cli files
+  ansible.builtin.file:
+    path: /tmp/sam-installation
+    state: directory
+    mode: '0775'
+  when: aws_sam_cli_installed.rc != 0
+
+- name: Download aws-sam-cli
+  ansible.builtin.unarchive:
+    src: https://github.com/aws/aws-sam-cli/releases/latest/download/aws-sam-cli-linux-x86_64.zip
+    dest: /tmp/sam-installation
+    remote_src: yes
+  when: aws_sam_cli_installed.rc != 0
+
+- name: Install the aws-sam-cli
+  command:
+    cmd: /tmp/sam-installation/install
+    creates: /usr/local/aws-sam-cli/v2/current/bin/aws
+  become: yes
+  become_method: sudo
+  when: aws_sam_cli_installed.rc != 0

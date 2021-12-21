@@ -9,6 +9,7 @@
       become_method: sudo
     - role: ghq
     - role: aws-cli
+    - role: aws-sam
     - role: docker-compose
     - role: ripgrep-all
     - role: google-chrome
