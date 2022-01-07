@@ -13,16 +13,19 @@ alias p='cd ~/Projects'
 alias activate="source ./venv/bin/activate"
 
 # git aliases
-alias grhm="git reset --hard origin/master"
-alias grhmain="git reset --hard origin/main"
+alias gr="git reset --hard HEAD"
+alias grmaster="git reset --hard origin/master"
+alias grmain="git reset --hard origin/main"
 alias grs="git reset --soft"
 alias gpm="git pull origin master"
 alias gpmain="git pull origin main"
 alias gfo="git fetch origin"
-alias gpush="git push origin HEAD:refs/for/master"
+alias gerritpush="git push origin HEAD:refs/for/master"
 alias gpushmaster="git push origin master"
-alias greset="git checkout master;grhm;gfo;gpm"
-alias gresetmain="git checkout main;grhmain;gfo;gpmain"
+alias greset="gr;git checkout master;grmaster;gfo;gpm"
+alias gresetmain="gr;git checkout main;grmain;gfo;gpmain"
+alias gs="git status"
+alias gcp="git cherry-pick "
 
 # Projects folder
 
