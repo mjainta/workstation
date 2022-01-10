@@ -50,6 +50,9 @@
     - vlc
     - tree
     - simple-scan
+    - gitk
+    - unifont # Fixes a bug with gitk and emojis in commits, see https://unix.stackexchange.com/questions/629281/gitk-crashes-when-viewing-commit-containing-emoji-x-error-of-failed-request-ba
+    - tldr
     state: present
 
 - name: Install snap packages
