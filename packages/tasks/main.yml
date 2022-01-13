@@ -53,7 +53,23 @@
     - gitk
     - unifont # Fixes a bug with gitk and emojis in commits, see https://unix.stackexchange.com/questions/629281/gitk-crashes-when-viewing-commit-containing-emoji-x-error-of-failed-request-ba
     - tldr
+    - ripgrep
+    - pandoc # Dependency for ripgrep
+    - poppler-utils # Dependency for ripgrep
+    - ffmpeg # Dependency for ripgrep
+    - httpie
+    - fd-find
+    - neovim
     state: present
+
+- name: Workaround for installing bat
+  command: apt install -o Dpkg::Options::="--force-overwrite" bat
+  become: yes
+  become_method: sudo
+
+- name: Install duf as a .deb package from the internet
+  apt:
+    deb: https://github.com/muesli/duf/releases/download/v0.7.0/duf_0.7.0_linux_amd64.deb
 
 - name: Install snap packages
   snap:

@@ -8,6 +8,12 @@ alias one='cd ~/Projects/tbone'
 
 # Various folder aliases
 alias p='cd ~/Projects'
+alias cdw="cd ~/Projects/github.com/mjainta/workstation"
+alias cdpc="cd ~/Projects/gitlab.com/theplaceholdercompany"
+
+# Various programm shortcuts
+alias bat='batcat'
+alias fd='fdfind'
 
 # Python aliases
 alias activate="source ./venv/bin/activate"
@@ -49,5 +55,3 @@ repo() {
 		cd "$REPO_PATH" || exit
 	fi
 }
-
-alias workstation="cd ~/Projects/github.com/mjainta/workstation"
