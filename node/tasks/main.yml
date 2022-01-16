@@ -31,10 +31,14 @@
   register: is_node_installed
   ignore_errors: yes
 
-- name: Install node lts
-  shell: zsh -ic 'nvm install --lts'
+- name: Install node stable
+  shell: zsh -ic 'nvm install stable'
   when: is_node_installed.stdout == 'none'
 
-- name: Use node lts
-  shell: zsh -ic 'nvm use --lts'
+- name: Use node stable
+  shell: zsh -ic 'nvm use stable'
+  when: is_node_installed.stdout == 'none'
+
+- name: Use node stable
+  shell: zsh -ic 'nvm alias default stable'
   when: is_node_installed.stdout == 'none'
