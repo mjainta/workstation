@@ -67,6 +67,14 @@
   become: yes
   become_method: sudo
 
+- name: Create a symbolic link for bat
+  ansible.builtin.file:
+    src: /usr/bin/batcat
+    dest: /home/{{ user_name }}/.local/bin/bat
+    owner: "{{ user_name }}"
+    group: "{{ user_group }}"
+    state: link
+
 - name: Install duf as a .deb package from the internet
   apt:
     deb: https://github.com/muesli/duf/releases/download/v0.7.0/duf_0.7.0_linux_amd64.deb
