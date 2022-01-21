@@ -63,7 +63,7 @@
     state: present
 
 - name: Workaround for installing bat
-  command: apt install -o Dpkg::Options::="--force-overwrite" bat
+  command: apt install -y -o Dpkg::Options::="--force-overwrite" bat
   become: yes
   become_method: sudo
 
