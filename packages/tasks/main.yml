@@ -15,17 +15,7 @@
 
 - name: Add Docker Repository
   apt_repository:
-    repo: deb https://download.docker.com/linux/ubuntu bionic stable
-    state: present
-
-- name: Add repository for shutter
-  ansible.builtin.apt_repository:
-    repo: ppa:shutter/ppa
-    state: present
-
-- name: Add repository for pulseeffects
-  ansible.builtin.apt_repository:
-    repo: ppa:mikhailnov/pulseeffects
+    repo: deb https://download.docker.com/linux/ubuntu focal stable
     state: present
 
 - name: Install applications via the package manager
@@ -66,6 +56,12 @@
   command: apt install -y -o Dpkg::Options::="--force-overwrite" bat
   become: yes
   become_method: sudo
+
+- name: Create directory for bat symlink
+  ansible.builtin.file:
+    path: /home/{{ user_name }}/.local/bin
+    state: directory
+    mode: '0755'
 
 - name: Create a symbolic link for bat
   ansible.builtin.file:
