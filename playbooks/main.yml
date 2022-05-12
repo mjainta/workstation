@@ -16,3 +16,4 @@
     - role: node
     - role: exa
     - role: terraform
+    - role: keychron-f-keys

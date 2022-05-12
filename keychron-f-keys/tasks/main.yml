@@ -1,0 +1,7 @@
+---
+# tasks file for keychron-f-keys
+
+- name: Change hid_apple fnmode to enable keychron F keys
+  shell: echo "0" | tee -a /sys/module/hid_apple/parameters/fnmode
+  become: yes
+  become_method: sudo

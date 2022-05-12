@@ -38,5 +38,5 @@ ansible-playbook --ask-become-pass --diff playbooks/main.yml
 
 ```bash
 ansible-galaxy init test-role-1
-rm test-role-1/.travis.yml
+rm test-role-1/.travis.yml # If it exists
 ```
