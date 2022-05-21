@@ -4,4 +4,5 @@ user_group: <user group>
 sssd: <false|true> # Is the user configured using sssd, or plain creation
 version_nvm: 0.39.0
 version_terraform: 1.1.2
+version_terragrunt: 0.37.1
 version_exa: 0.10.0
